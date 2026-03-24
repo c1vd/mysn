@@ -14,7 +14,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public void save(User user){
-        if (findUserByNickname(user.nickname).isPresent()){
+        if (findUserByNickname(user.getNickname()).isPresent()){
             return;
         }
         userRepository.save(user);

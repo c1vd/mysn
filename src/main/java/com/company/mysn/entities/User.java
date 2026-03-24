@@ -1,10 +1,16 @@
 package com.company.mysn.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,25 +24,35 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     @NotNull
-    public Long userId;
+    private Long userId;
     
     @NotBlank
     @Column(name="nickname")
-    public String nickname;
+    private String nickname;
 
     @NotBlank
     @Column(name="first_name")
-    public String firstName;
+    private String firstName;
 
     @NotBlank
     @Column(name="last_name")
-    public String lastName;
-
-    @NotBlank
-    @Column(name="email")
-    public String email;
+    private String lastName;
 
     @NotBlank
     @Column(name="password_hash")
-    public String passwordHash;
+    private String passwordHash;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name="posts")
+    private List<Article> posts = new ArrayList<>();
+
+    public void addPost(Article post) {
+        posts.add(post);
+        post.setUser(this);
+    }
+
+    public void removePost(Article post) {
+        posts.remove(post);
+        post.setUser(null);
+    }
 }
