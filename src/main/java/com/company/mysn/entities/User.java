@@ -43,16 +43,16 @@ public class User {
     private String passwordHash;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Column(name="posts")
-    private List<Article> posts = new ArrayList<>();
+    @Column(name="articles")
+    private List<Article> articles = new ArrayList<>();
 
-    public void addPost(Article post) {
-        posts.add(post);
-        post.setUser(this);
+    public void addArticle(Article article) {
+        articles.add(article);
+        article.setUser(this);
     }
 
-    public void removePost(Article post) {
-        posts.remove(post);
-        post.setUser(null);
+    public void removeArticle(Article article) {
+        articles.remove(article);
+        article.setUser(null);
     }
 }
