@@ -13,4 +13,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     List<Article> findArticlesByUser(User user);
 
     List<Article> findArticlesByUserNickname(String nickname);
+
+    List<Article> findTop100ByOrderByIdDesc();
 }

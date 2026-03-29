@@ -22,6 +22,10 @@ public class ArticleService {
         return articleRepository.findArticlesByUserNickname(nickname);
     }
 
+    public List<Article> last100(){
+        return articleRepository.findTop100ByOrderByIdDesc();
+    }
+
     public void save(Article article){
         articleRepository.save(article);
     }

@@ -10,4 +10,5 @@ import com.company.mysn.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findUserByNickname(String nickname);
+    boolean existsByNickname(String nickname);
 }

@@ -1,10 +1,15 @@
 services:
-  mysql:
-    image: 'mysql:latest'
-    environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+  h2-database:
+    image: thomseno/h2:latest
+    container_name: h2-server
+    restart: always
     ports:
-      - '3306'
+      - "8082:8082"
+      - "9092:9092"
+    environment:
+      - H2_DATABASE=mydb
+      - H2_OPTIONS=-WEB_ALLOW_OTHERS=true
+
+volumes:
+  h2-data:
+    driver: local

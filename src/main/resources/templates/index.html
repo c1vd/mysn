@@ -4,6 +4,8 @@
         <title th:text="${title}"></title>
     </head>
     <body>
-        Hello!
+        <ul>
+            <li th:each="article : ${articles}" th:text="${article.text}">Текст Статьи</li>
+        </ul>
     </body>
 </html>
