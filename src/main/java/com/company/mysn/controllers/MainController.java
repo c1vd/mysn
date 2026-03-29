@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.company.mysn.dto.RegistrationDto;
 import com.company.mysn.services.ArticleService;
 import com.company.mysn.services.UserService;
-
-import jakarta.validation.Valid;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
